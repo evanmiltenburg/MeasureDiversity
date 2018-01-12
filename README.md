@@ -13,7 +13,8 @@ Measure the diversity of image descriptions
 * Pdfcrop 1.38 (only to crop the graphs for the paper)
 
 # How to use
-Run the following commands in order:
+First run `bash get_data.sh` in the `Data/COCO/Raw/` folder. This downloads the 2014 MS COCO annotation data.
+Then the following commands in order:
 
 * `python 1. annotate_coco.py` to annotate the MS COCO training and val data.
 * `python 2. annotate_generated.py` to annotate the generated descriptions.
@@ -26,3 +27,9 @@ Run the following commands in order:
 * `python 9. generate_ranking_table.py` to generate the rankings.
 * `python 10. wordnet.py` to generate the WordNet specificity results.
 * `python 11. nouns_pps.py` to generate the compound noun and PP results.
+
+If you don't care about other systems, you can also just run `python 1. annotate_coco.py`
+and then run `python analyze_my_system.py`. This will generate all statistics for a single system.
+Make sure your system output is in the standard JSON format. See the Systems folder for examples.
+
+TODO: write `analyze_my_system.py`
