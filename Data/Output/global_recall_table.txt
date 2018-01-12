@@ -1,0 +1,17 @@
+\begin{tabular}{lr}
+\toprule
+ System              &   Coverage \\
+\midrule
+ Dai-et-al-2017      &       0.15 \\
+ Liu-et-al-2017      &       0.05 \\
+ Mun-et-al-2017      &       0.08 \\
+ Shetty-et-al-2016   &       0.08 \\
+ Shetty-et-al-2017   &       0.20 \\
+ Tavakoli-et-al-2017 &       0.07 \\
+ Vinyals-et-al-2017  &       0.07 \\
+ Wu-et-al-2016       &       0.06 \\
+ Zhou-et-al-2017     &       0.10 \\
+\bottomrule
+\end{tabular}
+
+The limit is:  0.7518938315201914. This means 4356 words in Val cannot be learned.

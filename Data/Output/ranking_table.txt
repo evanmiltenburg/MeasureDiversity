@@ -1,0 +1,27 @@
+\begin{tabular}{rlllll}
+\toprule 
+ & \multicolumn{2}{c}{Global ranking} & \multicolumn{3}{c}{Local ranking} \\
+    & Train     & Val      & Absolute   & Relative     & Relative$_{10}$   \\
+\midrule
+  1. & 's        & 's       & man        & pillow       & door         \\
+  2. & elderly   & elderly  & dog        & kitten       & paper        \\
+  3. & toast     & toast    & woman      & flag         & van          \\
+  4. & we        & we       & people     & turkey       & pink         \\
+  5. & whole     & thrown   & cat        & milk         & head         \\
+  6. & laughing  & whole    & umbrella   & ice          & doll         \\
+  7. & displays  & ham      & dogs       & chips        & hair         \\
+  8. & meadow    & located  & sign       & rainbow      & pool         \\
+  9. & located   & driver   & pizza      & potatoes     & fork         \\
+ 10. & ham       & mat      & ball       & map          & tray         \\
+ 11. & nicely    & n't      & cake       & eggs         & carrot       \\
+ 12. & n't       & heading  & bear       & cream        & girls        \\
+ 13. & almost    & displays & bed        & butter       & apple        \\
+ 14. & more      & amongst  & table      & strawberries & women        \\
+ 15. & picking   & simple   & elephant   & pregnant     & rice         \\
+ 16. & gentleman & more     & phone      & piano        & lights       \\
+ 17. & driver    & laughing & horse      & peanut       & basket       \\
+ 18. & tablet    & picking  & girl       & pancakes     & benches      \\
+ 19. & booth     & almost   & frisbee    & moon         & lot          \\
+ 20. & sunlight  & booth    & bus        & garage       & cars         \\
+\bottomrule
+\end{tabular}

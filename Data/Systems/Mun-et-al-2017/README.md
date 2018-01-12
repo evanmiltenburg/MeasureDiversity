@@ -1,0 +1,13 @@
+# Citation
+
+```
+@inproceedings{AAAI1714888,
+	Abstract = {Visual attention plays an important role to understand images and demonstrates its effectiveness in generating natural language descriptions of images. On the other hand, recent studies show that language associated with an image can steer visual attention in the scene during our cognitive process. Inspired by this, we introduce a text-guided attention model for image captioning, which learns to drive visual attention using associated captions. For this model, we propose an exemplar-based learning approach that retrieves from training data associated captions with each image, and use them to learn attention on visual features. Our attention model enables to describe a detailed state of scenes by distinguishing small or confusable objects effectively. We validate our model on MS-COCO Captioning benchmark and achieve the state-of-the-art performance in standard metrics.},
+	Author = {Jonghwan Mun and Minsu Cho and Bohyung Han},
+	Booktitle = {AAAI Conference on Artificial Intelligence},
+	Keywords = {Image Captioning; Attention Model},
+	Title = {Text-Guided Attention Model for Image Captioning},
+	Url = {https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/view/14888},
+	Year = {2017},
+	Bdsk-Url-1 = {https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/view/14888}}
+```

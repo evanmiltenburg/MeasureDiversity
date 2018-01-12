@@ -1,0 +1,19 @@
+\begin{tabular}{lrrrrrrrrrrrr}
+\toprule 
+ & \multicolumn{3}{c}{Compound length} & \multicolumn{2}{c}{Compound stats} & \multicolumn{5}{c}{Prepositional phrase depth} &  & \multicolumn{2}{c}{PP stats}\\
+ \cmidrule(lr){2-4} \cmidrule(lr){5-6} \cmidrule(lr){7-11} \cmidrule(lr){12-13}
+
+                     &     2 &    3 &   4 &   Ratio &   Types-2 &     1 &     2 &    3 &   4 &   5 &   Preposition Ratio &   Types-1 \\
+\midrule
+ Val                 & 17739 & 1252 & 149 &    0.47 &      6089 & 52380 & 14639 & 3037 & 502 &  73 &                1.74 &     22237 \\
+ \citeauthor{Dai_2017_ICCV} (\citeyear{Dai_2017_ICCV})      & 14381 &  504 &  24 &    0.37 &      2576 & 51170 & 16613 & 3753 & 402 &  20 &                1.78 &     11709 \\
+ \citeauthor{liu2017mat} (\citeyear{liu2017mat})      & 13449 &   56 &   0 &    0.33 &       122 & 51542 & 18653 & 4493 & 528 &  15 &                1.86 &      1145 \\
+ \citeauthor{mun2017text} (\citeyear{mun2017text})      & 13158 &   99 &   9 &    0.33 &       300 & 49827 & 16920 & 3266 & 311 &   4 &                1.74 &      2423 \\
+ \citeauthor{Shetty:2016:ESC:2983563.2983571} (\citeyear{Shetty:2016:ESC:2983563.2983571})   & 11969 &  192 &   0 &    0.3  &       319 & 47392 & 16305 & 2825 & 350 &   0 &                1.65 &      2426 \\
+ \citeauthor{Shetty_2017_ICCV} (\citeyear{Shetty_2017_ICCV})   & 16027 &  772 &  71 &    0.42 &      1446 & 46732 & 14908 & 2217 & 246 &   6 &                1.58 &      8439 \\
+ \citeauthor{tavakoli2017paying} (\citeyear{tavakoli2017paying}) & 13381 &  133 &   5 &    0.33 &       259 & 47395 & 17798 & 3824 & 640 &   2 &                1.72 &      1888 \\
+ \citeauthor{vinyals2017show} (\citeyear{vinyals2017show})  & 15266 &  546 &   1 &    0.39 &       275 & 46436 & 18818 & 4095 & 970 &   2 &                1.74 &      1678 \\
+ \citeauthor{wu2017image} (\citeyear{wu2017image})       & 13640 &  281 &   1 &    0.34 &       237 & 46732 & 17558 & 3471 & 557 &   0 &                1.69 &      1732 \\
+ \citeauthor{zhou2017watch} (\citeyear{zhou2017watch})     & 13510 &  214 &  20 &    0.34 &       472 & 49200 & 16783 & 2953 & 164 &   3 &                1.71 &      3451 \\
+\bottomrule
+\end{tabular}

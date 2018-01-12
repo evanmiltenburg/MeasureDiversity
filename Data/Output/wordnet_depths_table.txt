@@ -1,0 +1,18 @@
+\begin{tabular}{lrrrr}
+\toprule 
+ & \multicolumn{2}{c}{Types} & \multicolumn{2}{c}{Tokens}\\
+ \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+ Name                &   Avg &   Std &   Avg &   Std \\
+\midrule
+ \citeauthor{Dai_2017_ICCV} (\citeyear{Dai_2017_ICCV})      &  7.56 &  1.60 &  7.04 &  1.78 \\
+ \citeauthor{liu2017mat} (\citeyear{liu2017mat})      &  7.72 &  1.75 &  6.99 &  1.87 \\
+ \citeauthor{mun2017text} (\citeyear{mun2017text})      &  7.74 &  1.73 &  7.04 &  1.84 \\
+ \citeauthor{Shetty:2016:ESC:2983563.2983571} (\citeyear{Shetty:2016:ESC:2983563.2983571})   &  7.75 &  1.75 &  7.00 &  1.89 \\
+ \citeauthor{Shetty_2017_ICCV} (\citeyear{Shetty_2017_ICCV})   &  7.59 &  1.64 &  7.15 &  1.81 \\
+ \citeauthor{tavakoli2017paying} (\citeyear{tavakoli2017paying}) &  7.74 &  1.70 &  6.97 &  1.91 \\
+ \citeauthor{vinyals2017show} (\citeyear{vinyals2017show})  &  7.76 &  1.77 &  7.03 &  1.82 \\
+ \citeauthor{wu2017image} (\citeyear{wu2017image})       &  7.68 &  1.68 &  7.01 &  1.92 \\
+ \citeauthor{zhou2017watch} (\citeyear{zhou2017watch})     &  7.78 &  1.74 &  7.07 &  1.87 \\
+ Val                 &  7.70 &  1.76 &  7.19 &  1.78 \\
+\bottomrule
+\end{tabular}
