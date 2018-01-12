@@ -1,5 +1,6 @@
 .json
 *.json
+!Data/Systems/*/Val/*.json
 Test/
 
 # General
