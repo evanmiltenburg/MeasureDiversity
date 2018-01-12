@@ -6,6 +6,7 @@ Measure the diversity of image descriptions
   * SpaCy 2.0.4
     * Model: `en_core_web_sm`
   * NLTK 3.2.2
+    * WordNet 3.0
   * Matplotlib 2.1.1
   * Seaborn 0.7.1
   * Tabulate 0.7.7
@@ -13,6 +14,14 @@ Measure the diversity of image descriptions
 * Pdfcrop 1.38 (only to crop the graphs for the paper)
 
 # How to use
+
+Instructions to either:
+
+* Reproduce our results
+* Analyze your own system
+
+## Reproducing our results
+
 First run `bash get_data.sh` in the `Data/COCO/Raw/` folder. This downloads the 2014 MS COCO annotation data.
 Then the following commands in order:
 
@@ -27,6 +36,12 @@ Then the following commands in order:
 * `python 9. generate_ranking_table.py` to generate the rankings.
 * `python 10. wordnet.py` to generate the WordNet specificity results.
 * `python 11. nouns_pps.py` to generate the compound noun and PP results.
+
+If you are interested to reproduce our exact figures, run `pdfcrop FILENAME.pdf`
+on the relevant files in `Data/Output/`. This tool is provided with the TeXLive
+LaTeX distribution.
+
+## Analyzing your own system
 
 If you don't care about other systems, you can also just run `python 1. annotate_coco.py`
 and then run `python analyze_my_system.py`. This will generate all statistics for a single system.
