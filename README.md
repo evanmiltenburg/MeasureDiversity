@@ -57,5 +57,3 @@ LaTeX distribution.
 If you don't care about other systems, you can also just run `python annotate_coco.py`
 and then run `python analyze_my_system.py`. This will generate all statistics for a single system.
 Make sure your system output is in the standard JSON format. See the Systems folder for examples.
-
-TODO: write `analyze_my_system.py`
