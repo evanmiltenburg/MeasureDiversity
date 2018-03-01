@@ -2,7 +2,7 @@ import json
 import random
 import numpy as np
 from collections import defaultdict, Counter
-from nltk import bigrams
+from nltk import ngrams
 
 random.seed(1234)
 
@@ -192,20 +192,30 @@ def type_token_ratio(sentences, n=1000):
     return final_ttr
 
 
-def bigram_ttr(sentences, n=1000):
+def ngram_ttr(sentences, n=2, window_size=1000):
     """
-    Compute average bigram type-token ratio (normalized over n bigrams)
+    Compute average ngram type-token ratio (normalized over window_size ngrams)
     with a repeated sample of n words.
     """
-    all_bigrams = list(bigrams([word for sentence in sentences for word in sentence]))
+    all_ngrams = list(ngrams([word for sentence in sentences for word in sentence], n))
     ttrs = []
-    for chunk in chunks(all_bigrams, n):
-        if len(chunk) == n:
+    for chunk in chunks(all_ngrams, window_size):
+        if len(chunk) == window_size:
             types = set(chunk)
-            ttr = float(len(types))/n
+            ttr = float(len(types))/window_size
             ttrs.append(ttr)
     final_ttr = float(sum(ttrs))/len(ttrs)
     return final_ttr
+
+
+def bigram_ttr(sentences):
+    "Compute bigram TTR"
+    return ngram_ttr(sentences, n=2)
+
+
+def trigram_ttr(sentences):
+    "Compute trigram TTR"
+    return ngram_ttr(sentences, n=3)
 
 ###########################################
 
@@ -331,6 +341,7 @@ def parallel_stats(parallel_sentences):
     data['std_sentence_length']     = average_function(std_sentence_length, parallel_sentences)
     data['type_token_ratio']        = average_function(type_token_ratio, parallel_sentences)
     data['bittr']                   = average_function(bigram_ttr, parallel_sentences)
+    data['trittr']                  = average_function(trigram_ttr, parallel_sentences)
     data['ttr10k']                  = average_function(ttr10k, parallel_sentences)
     data['ttr100k']                 = average_function(ttr100k, parallel_sentences)
     return data
@@ -344,6 +355,7 @@ def system_stats(sentences):
     data['std_sentence_length']     = std_sentence_length(sentences)
     data['type_token_ratio']        = type_token_ratio(sentences)
     data['bittr']                   = bigram_ttr(sentences)
+    data['trittr']                  = trigram_ttr(sentences)
     data['ttr10k']                  = ttr10k(sentences)
     data['ttr100k']                 = ttr100k(sentences)
     return data

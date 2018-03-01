@@ -1,19 +1,18 @@
-\newcommand{\paperdata}[2]{\citeauthor{#1} (\citeyear{#1}) & \cite{#1} & #2}
-
-\begin{tabular}{lllllrrrrrrl}
+\begin{tabular}{lrrrrrrrrrrr}
 \toprule
- Name                & Ref   & Technique        & BLEU   & Meteor   &   ASL &   SDSL &   Types &   MSTTR &   BiTTR &   \textbackslash{}\%Novel & Coverage   \\
+ System              & BLEU   & Meteor   &   ASL &   SDSL &   Types &   TTR1 &   TTR2 &   Novel & Cov   & Loc5   \\
 \midrule
- \paperdata{Dai_2017_ICCV}{GAN with policy gradient}                        & 20.7   & 22.4     &   9.8 &   1.63 &    1922 &    0.23 &    0.55 &      87.7 & 0.15       \\
- \paperdata{liu2017mat}{Object detector+LSTM}                        & 32.3   & 25.8     &  10.3 &   1.32 &     598 &    0.17 &    0.38 &      50.1 & 0.05       \\
- \paperdata{mun2017text}{Text-guided attention LSTM}                        & 32.6   & 25.7     &   9.4 &   1.12 &    1009 &    0.16 &    0.38 &      50   & 0.08       \\
- \paperdata{Shetty:2016:ESC:2983563.2983571}{CNN\&scene features+LSTM}                     & 31.9   & 25.2     &   9   &   1.03 &    1112 &    0.15 &    0.34 &      43   & 0.08       \\
- \paperdata{Shetty_2017_ICCV}{GAN with Gumbel softmax}                     & --     & 23.6     &   9.4 &   1.31 &    2611 &    0.24 &    0.54 &      80.5 & 0.20       \\
- \paperdata{tavakoli2017paying}{CNN\&saliency features+LSTM}                   & 28.7   & 23.5     &   9.2 &   1.03 &     917 &    0.15 &    0.33 &      38.8 & 0.07       \\
- \paperdata{vinyals2017show}{CNN+LSTM}                    & 32.1   & 25.7     &  10.1 &   1.28 &     953 &    0.21 &    0.43 &      90.5 & 0.07       \\
- \paperdata{wu2017image}{Attribute vector+LSTM}                         & 31.0   & 25.0     &   9.1 &   1.03 &     849 &    0.14 &    0.32 &      44.5 & 0.06       \\
- \paperdata{zhou2017watch}{CNN+text-conditional LSTM}                       & 30.0   & 24.8     &   9.3 &   1.2  &    1334 &    0.22 &    0.51 &      60.1 & 0.10       \\
- Val                 &       & Reference corpus & --     & --       &  11.3 &   2.61 &    9200 &    0.32 &    0.72 &      95.3 & --         \\
+ Dai et al. 2017      & 20.7   & 22.4     &   9.8 &   1.63 &    1922 &   0.23 &   0.55 &    87.7 & 0.15  & 0.76   \\
+ Liu et al. 2017      & 32.3   & 25.8     &  10.3 &   1.32 &     598 &   0.17 &   0.38 &    50.1 & 0.05  & 0.70   \\
+ Mun et al. 2017      & 32.6   & 25.7     &   9.4 &   1.12 &    1009 &   0.16 &   0.38 &    50.0 & 0.08  & 0.78   \\
+ Shetty et al. 2016   & 31.9   & 25.2     &   9.0 &   1.03 &    1112 &   0.15 &   0.34 &    43.0 & 0.08  & 0.74   \\
+ Shetty et al. 2017   & --     & 23.6     &   9.4 &   1.31 &    2611 &   0.24 &   0.54 &    80.5 & 0.20  & 0.71   \\
+ Tavakoli et al. 2017 & 28.7   & 23.5     &   9.2 &   1.03 &     917 &   0.15 &   0.33 &    38.8 & 0.07  & 0.66   \\
+ Vinyals et al. 2017  & 32.1   & 25.7     &  10.1 &   1.28 &     953 &   0.21 &   0.43 &    90.5 & 0.07  & 0.69   \\
+ Wu et al. 2016       & 31.0   & 25.0     &   9.1 &   1.03 &     849 &   0.14 &   0.32 &    44.5 & 0.06  & 0.72   \\
+ Zhou et al. 2017     & 30.0   & 24.8     &   9.3 &   1.2  &    1334 &   0.22 &   0.51 &    60.1 & 0.10  & 0.80   \\
+ \midrule 
+ Val                 & --     & --       &  11.3 &   2.61 &    9200 &   0.32 &   0.72 &    95.3 & --    & --     \\
 \bottomrule
 \end{tabular}
 Caption: The number of Types and Tokens, Average Sentence Length (ASL), and

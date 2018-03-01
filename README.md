@@ -22,20 +22,27 @@ Instructions to either:
 
 ## Reproducing our results
 
-First run `bash get_data.sh` in the `Data/COCO/Raw/` folder. This downloads the 2014 MS COCO annotation data.
+First run `bash get_data.sh` in the `Data/COCO/Raw/` folder. This downloads the 2014 MS COCO annotation data
+and unpacks the zip file. Please ensure that both `JSON` files are unpacked in `Data/COCO/Raw/` (and not in some subfolder).
+
 Then the following commands in order:
 
-* `python 1. annotate_coco.py` to annotate the MS COCO training and val data.
-* `python 2. annotate_generated.py` to annotate the generated descriptions.
-* `python 3. coco_stats.py` to generate statistics about the MS COCO data.
-* `python 4. system_stats.py` to generate statistics about the systems.
-* `python 5. plot_ttr_curve.py` to plot the type-token curve for MS COCO and all systems.
-* `python 6. global_recall.py` to compute global recall.
-* `python 7. local_recall.py` to compute local recall.
-* `python 8. generate_main_table.py` to generate the main table.
-* `python 9. generate_ranking_table.py` to generate the rankings.
-* `python 10. wordnet.py` to generate the WordNet specificity results.
-* `python 11. nouns_pps.py` to generate the compound noun and PP results.
+* `python annotate_coco.py` to annotate the MS COCO training and val data.
+* `python annotate_generated.py` to annotate the generated descriptions.
+* `python coco_stats.py` to generate statistics about the MS COCO data.
+* `python system_stats.py` to generate statistics about the systems.
+* `python plot_ttr_curve.py` to plot the type-token curve for MS COCO and all systems.
+* `python global_recall.py` to compute global recall.
+* `python local_recall.py` to compute local recall.
+* `python generate_main_table.py` to generate the main table.
+* `python generate_ranking_table.py` to generate the rankings.
+* `python wordnet.py` to generate the WordNet specificity results.
+* `python nouns_pps.py` to generate the compound noun and PP results.
+* `python plot_compound_length.py` to generate a histogram of compound length for different systems.
+* `python plot_pp_length.py` to generate a histogram of PP depth for different systems.
+
+If you modify any of the Python files, you can rerun the analysis using `bash run_experiment.sh`.
+We commented out the first two commands, because annotating all the data takes a long time.
 
 If you are interested to reproduce our exact figures, run `pdfcrop FILENAME.pdf`
 on the relevant files in `Data/Output/`. This tool is provided with the TeXLive
@@ -43,7 +50,7 @@ LaTeX distribution.
 
 ## Analyzing your own system
 
-If you don't care about other systems, you can also just run `python 1. annotate_coco.py`
+If you don't care about other systems, you can also just run `python annotate_coco.py`
 and then run `python analyze_my_system.py`. This will generate all statistics for a single system.
 Make sure your system output is in the standard JSON format. See the Systems folder for examples.
 

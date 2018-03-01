@@ -25,3 +25,60 @@
  20. & sunlight  & booth    & bus        & garage       & cars         \\
 \bottomrule
 \end{tabular}
+
+\begin{tabular}{ll}
+\toprule 
+\multicolumn{2}{c}{Global ranking}\\
+ Train     & Val      \\
+\midrule
+ 's        & 's       \\
+ elderly   & elderly  \\
+ toast     & toast    \\
+ we        & we       \\
+ whole     & thrown   \\
+ laughing  & whole    \\
+ displays  & ham      \\
+ meadow    & located  \\
+ located   & driver   \\
+ ham       & mat      \\
+ nicely    & n't      \\
+ n't       & heading  \\
+ almost    & displays \\
+ more      & amongst  \\
+ picking   & simple   \\
+ gentleman & more     \\
+ driver    & laughing \\
+ tablet    & picking  \\
+ booth     & almost   \\
+ sunlight  & booth    \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{lll}
+\toprule 
+\multicolumn{3}{c}{Local ranking}\\
+ Absolute   & Relative     & Relative$_{10}$   \\
+\midrule
+ man        & pillow       & door         \\
+ dog        & kitten       & paper        \\
+ woman      & flag         & van          \\
+ people     & turkey       & pink         \\
+ cat        & milk         & head         \\
+ umbrella   & ice          & doll         \\
+ dogs       & chips        & hair         \\
+ sign       & rainbow      & pool         \\
+ pizza      & potatoes     & fork         \\
+ ball       & map          & tray         \\
+ cake       & eggs         & carrot       \\
+ bear       & cream        & girls        \\
+ bed        & butter       & apple        \\
+ table      & strawberries & women        \\
+ elephant   & pregnant     & rice         \\
+ phone      & piano        & lights       \\
+ horse      & peanut       & basket       \\
+ girl       & pancakes     & benches      \\
+ frisbee    & moon         & lot          \\
+ bus        & garage       & cars         \\
+\bottomrule
+\end{tabular}
+
