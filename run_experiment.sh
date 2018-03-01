@@ -14,8 +14,8 @@ echo "main table"
 python generate_main_table.py
 echo "ranking table"
 python generate_ranking_table.py
-echo "wordnet"
-python wordnet.py
+# echo "wordnet"
+# python wordnet.py
 echo "nouns and pps"
 python nouns_pps.py
 echo "make compound plot"

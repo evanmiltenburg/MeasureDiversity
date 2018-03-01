@@ -90,19 +90,6 @@ def local_recall_counts(generated, ref_data):
 ################################################################################
 # Plot the scores.
 
-system2label  = {'Dai-et-al-2017': 'Dai et al. 2017',
-                 'Liu-et-al-2017': 'Liu et al. 2017',
-                 'Mun-et-al-2017': 'Mun et al. 2017',
-                 'Shetty-et-al-2016': 'Shetty et al. 2016',
-                 'Shetty-et-al-2017': 'Shetty et al. 2017',
-                 'Tavakoli-et-al-2017': 'Tavakoli et al. 2017',
-                 'Vinyals-et-al-2017': 'Vinyals et al. 2017',
-                 'Wu-et-al-2016': 'Wu et al. 2016',
-                 'Zhou-et-al-2017': 'Zhou et al. 2017'}
-
-system2color = dict(zip(sorted(system2label),my_palette))
-
-
 def plot_scores(results):
     fig, ax = plt.subplots(figsize=(32,20))
     lw = 8.0
@@ -143,25 +130,39 @@ def plot_scores(results):
 ################################################################################
 # Compute all the stats.
 
-val_index = index_from_file('./Data/COCO/Processed/tagged_val2014.json', tagged=True, lower=True)
+if __name__ == '__main__':
+    # Mapping to printable names.
+    system2label  = {'Dai-et-al-2017': 'Dai et al. 2017',
+                     'Liu-et-al-2017': 'Liu et al. 2017',
+                     'Mun-et-al-2017': 'Mun et al. 2017',
+                     'Shetty-et-al-2016': 'Shetty et al. 2016',
+                     'Shetty-et-al-2017': 'Shetty et al. 2017',
+                     'Tavakoli-et-al-2017': 'Tavakoli et al. 2017',
+                     'Vinyals-et-al-2017': 'Vinyals et al. 2017',
+                     'Wu-et-al-2016': 'Wu et al. 2016',
+                     'Zhou-et-al-2017': 'Zhou et al. 2017'}
 
-systems = ['Dai-et-al-2017',
-           'Liu-et-al-2017',
-           'Mun-et-al-2017',
-           'Shetty-et-al-2016',
-           'Shetty-et-al-2017',
-           'Tavakoli-et-al-2017',
-           'Vinyals-et-al-2017',
-           'Wu-et-al-2016',
-           'Zhou-et-al-2017']
+    system2color = dict(zip(sorted(system2label),my_palette))
 
-all_results = dict()
-for system in systems:
-    print('Processing:', system)
-    generated = name_to_mapping(system)
-    system_results = dict(scores = local_recall_scores(generated, val_index),
-                          counts = local_recall_counts(generated, val_index))
-    all_results[system] = system_results
+    val_index = index_from_file('./Data/COCO/Processed/tagged_val2014.json', tagged=True, lower=True)
 
-plot_scores(all_results)
-save_json(all_results, './Data/Output/local_recall.json')
+    systems = ['Dai-et-al-2017',
+               'Liu-et-al-2017',
+               'Mun-et-al-2017',
+               'Shetty-et-al-2016',
+               'Shetty-et-al-2017',
+               'Tavakoli-et-al-2017',
+               'Vinyals-et-al-2017',
+               'Wu-et-al-2016',
+               'Zhou-et-al-2017']
+
+    all_results = dict()
+    for system in systems:
+        print('Processing:', system)
+        generated = name_to_mapping(system)
+        system_results = dict(scores = local_recall_scores(generated, val_index),
+                              counts = local_recall_counts(generated, val_index))
+        all_results[system] = system_results
+
+    plot_scores(all_results)
+    save_json(all_results, './Data/Output/local_recall.json')

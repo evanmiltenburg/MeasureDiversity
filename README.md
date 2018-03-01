@@ -17,8 +17,13 @@ Measure the diversity of image descriptions
 
 Instructions to either:
 
+* Inspect our data
 * Reproduce our results
 * Analyze your own system
+
+## Inspecting our data
+
+Please find all output in `Data/Output/`.
 
 ## Reproducing our results
 
@@ -36,7 +41,6 @@ Then the following commands in order:
 * `python local_recall.py` to compute local recall.
 * `python generate_main_table.py` to generate the main table.
 * `python generate_ranking_table.py` to generate the rankings.
-* `python wordnet.py` to generate the WordNet specificity results.
 * `python nouns_pps.py` to generate the compound noun and PP results.
 * `python plot_compound_length.py` to generate a histogram of compound length for different systems.
 * `python plot_pp_length.py` to generate a histogram of PP depth for different systems.

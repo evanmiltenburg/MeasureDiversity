@@ -140,71 +140,72 @@ def get_reference_row(all_compound_data, all_pp_data):
 #########################################
 # Systems..
 
-systems = ['Dai-et-al-2017',
-           'Liu-et-al-2017',
-           'Mun-et-al-2017',
-           'Shetty-et-al-2016',
-           'Shetty-et-al-2017',
-           'Tavakoli-et-al-2017',
-           'Vinyals-et-al-2017',
-           'Wu-et-al-2016',
-           'Zhou-et-al-2017']
+if __name__ == "__main__":
+    systems = ['Dai-et-al-2017',
+               'Liu-et-al-2017',
+               'Mun-et-al-2017',
+               'Shetty-et-al-2016',
+               'Shetty-et-al-2017',
+               'Tavakoli-et-al-2017',
+               'Vinyals-et-al-2017',
+               'Wu-et-al-2016',
+               'Zhou-et-al-2017']
 
-all_data = dict()
-system_rows = []
-def load_system_data(name):
-    base = './Data/Systems/'
-    path = base + name + '/Val/annotated.json'
-    return load_json(path)
+    all_data = dict()
+    system_rows = []
+    def load_system_data(name):
+        base = './Data/Systems/'
+        path = base + name + '/Val/annotated.json'
+        return load_json(path)
 
-loaded_systems = {system: load_system_data(system) for system in systems}
-for name, entries in loaded_systems.items():
-    print(name)
-    compound_data = compound_stats(entries)
-    pp_data = pp_stats(entries)
-    row = [name] + get_system_row(compound_data, pp_data)
-    system_rows.append(row)
-    all_data[name] = {'pp_data': pp_data, 'compound_data': compound_data}
+    loaded_systems = {system: load_system_data(system) for system in systems}
+    for name, entries in loaded_systems.items():
+        print(name)
+        compound_data = compound_stats(entries)
+        pp_data = pp_stats(entries)
+        row = [name] + get_system_row(compound_data, pp_data)
+        system_rows.append(row)
+        all_data[name] = {'pp_data': pp_data, 'compound_data': compound_data}
 
-#########################################
-# Val..
+    #########################################
+    # Val..
 
-val_tagged = load_json('./Data/COCO/Processed/tagged_val2014.json')
-parallel_entries    = parallel_entries(val_tagged)
-print('Val')
-all_compound_data   = list(map(compound_stats, parallel_entries))
-all_pp_data         = list(map(pp_stats, parallel_entries))
+    val_tagged = load_json('./Data/COCO/Processed/tagged_val2014.json')
+    parallel_entries    = parallel_entries(val_tagged)
+    print('Val')
+    all_compound_data   = list(map(compound_stats, parallel_entries))
+    all_pp_data         = list(map(pp_stats, parallel_entries))
 
-val_row             = ['Val'] + get_reference_row(all_compound_data, all_pp_data)
-all_data['val'] = {'pp_data': all_pp_data, 'compound_data': all_compound_data}
+    val_row             = ['Val'] + get_reference_row(all_compound_data, all_pp_data)
+    all_data['val'] = {'pp_data': all_pp_data, 'compound_data': all_compound_data}
 
-#########################################
-# Create table
+    #########################################
+    # Create table
 
-systems = {'Dai-et-al-2017': "\citeauthor{Dai_2017_ICCV} (\citeyear{Dai_2017_ICCV})",
-           'Liu-et-al-2017': "\citeauthor{liu2017mat} (\citeyear{liu2017mat})",
-           'Mun-et-al-2017': "\citeauthor{mun2017text} (\citeyear{mun2017text})",
-           'Shetty-et-al-2016': '\citeauthor{Shetty:2016:ESC:2983563.2983571} (\citeyear{Shetty:2016:ESC:2983563.2983571})',
-           'Shetty-et-al-2017': '\citeauthor{Shetty_2017_ICCV} (\citeyear{Shetty_2017_ICCV})',
-           'Tavakoli-et-al-2017': '\citeauthor{tavakoli2017paying} (\citeyear{tavakoli2017paying})',
-           'Vinyals-et-al-2017': '\citeauthor{vinyals2017show} (\citeyear{vinyals2017show})',
-           'Wu-et-al-2016': '\citeauthor{wu2017image} (\citeyear{wu2017image})',
-           'Zhou-et-al-2017': '\citeauthor{zhou2017watch} (\citeyear{zhou2017watch})'}
+    systems = {'Dai-et-al-2017': "\citeauthor{Dai_2017_ICCV} (\citeyear{Dai_2017_ICCV})",
+               'Liu-et-al-2017': "\citeauthor{liu2017mat} (\citeyear{liu2017mat})",
+               'Mun-et-al-2017': "\citeauthor{mun2017text} (\citeyear{mun2017text})",
+               'Shetty-et-al-2016': '\citeauthor{Shetty:2016:ESC:2983563.2983571} (\citeyear{Shetty:2016:ESC:2983563.2983571})',
+               'Shetty-et-al-2017': '\citeauthor{Shetty_2017_ICCV} (\citeyear{Shetty_2017_ICCV})',
+               'Tavakoli-et-al-2017': '\citeauthor{tavakoli2017paying} (\citeyear{tavakoli2017paying})',
+               'Vinyals-et-al-2017': '\citeauthor{vinyals2017show} (\citeyear{vinyals2017show})',
+               'Wu-et-al-2016': '\citeauthor{wu2017image} (\citeyear{wu2017image})',
+               'Zhou-et-al-2017': '\citeauthor{zhou2017watch} (\citeyear{zhou2017watch})'}
 
-data = [val_row] + system_rows
-headers = ['','2','3','4','Ratio', 'Types-2', '1','2','3','4','5', 'Ratio', 'Types-1']
-table = tabulate(data, headers, tablefmt='latex_booktabs')
-# Modify table
-# table = table.replace('{lrrrrrrrrrr}','{lrrrcrrrrrc}')
-table = table.replace('&    0.3  &','&    0.30  &')
-table = table.replace('\\toprule', '\\toprule \n & \multicolumn{3}{c}{Compound length} & \multicolumn{2}{c}{Compound stats} & \multicolumn{5}{c}{Prepositional phrase depth} & \multicolumn{2}{c}{PP stats}\\\\\n \cmidrule(lr){2-4} \cmidrule(lr){5-6} \cmidrule(lr){7-11} \cmidrule(lr){12-13}\n')
-for system, cite in systems.items():
-    table = table.replace(system, cite)
+    data = [val_row] + system_rows
+    headers = ['','2','3','4','Ratio', 'Types-2', '1','2','3','4','5', 'Ratio', 'Types-1']
+    table = tabulate(data, headers, tablefmt='latex_booktabs')
+    # Modify table
+    # table = table.replace('{lrrrrrrrrrr}','{lrrrcrrrrrc}')
+    table = table.replace('&    0.3  &','&    0.30  &')
+    table = table.replace('\\toprule', '\\toprule \n & \multicolumn{3}{c}{Compound length} & \multicolumn{2}{c}{Compound stats} & \multicolumn{5}{c}{Prepositional phrase depth} & \multicolumn{2}{c}{PP stats}\\\\\n \cmidrule(lr){2-4} \cmidrule(lr){5-6} \cmidrule(lr){7-11} \cmidrule(lr){12-13}\n')
+    for system, cite in systems.items():
+        table = table.replace(system, cite)
 
-# Print and save.
-print(table)
+    # Print and save.
+    print(table)
 
-with open('./Data/Output/nouns_pps_table.txt', 'w') as f:
-    f.write(table)
+    with open('./Data/Output/nouns_pps_table.txt', 'w') as f:
+        f.write(table)
 
-save_json(all_data, './Data/Output/nouns_pps.json')
+    save_json(all_data, './Data/Output/nouns_pps.json')

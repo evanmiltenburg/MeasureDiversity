@@ -7,6 +7,7 @@ from tabulate import tabulate
 from matplotlib import pyplot as plt
 from matplotlib.lines import Line2D
 import seaborn as sns
+
 sns.set_style("white")
 sns.set_context('paper', font_scale=7)
 my_palette = sns.color_palette("cubehelix", 10)
@@ -75,17 +76,6 @@ def get_count_list(stats):
     c = Counter(stats['total_counts'])
     return c.most_common()
 
-system2label  = {'Dai-et-al-2017': 'Dai et al. 2017',
-                 'Liu-et-al-2017': 'Liu et al. 2017',
-                 'Mun-et-al-2017': 'Mun et al. 2017',
-                 'Shetty-et-al-2016': 'Shetty et al. 2016',
-                 'Shetty-et-al-2017': 'Shetty et al. 2017',
-                 'Tavakoli-et-al-2017': 'Tavakoli et al. 2017',
-                 'Vinyals-et-al-2017': 'Vinyals et al. 2017',
-                 'Wu-et-al-2016': 'Wu et al. 2016',
-                 'Zhou-et-al-2017': 'Zhou et al. 2017'}
-
-system2color = dict(zip(sorted(system2label),my_palette))
 
 def plot_percentiles(results):
     fig, ax = plt.subplots(figsize=(28,20))
@@ -130,59 +120,71 @@ def plot_percentiles(results):
 
 ################################################################################
 # Main definitions.
+if __name__ == "__main__":
+    system2label  = {'Dai-et-al-2017': 'Dai et al. 2017',
+                     'Liu-et-al-2017': 'Liu et al. 2017',
+                     'Mun-et-al-2017': 'Mun et al. 2017',
+                     'Shetty-et-al-2016': 'Shetty et al. 2016',
+                     'Shetty-et-al-2017': 'Shetty et al. 2017',
+                     'Tavakoli-et-al-2017': 'Tavakoli et al. 2017',
+                     'Vinyals-et-al-2017': 'Vinyals et al. 2017',
+                     'Wu-et-al-2016': 'Wu et al. 2016',
+                     'Zhou-et-al-2017': 'Zhou et al. 2017'}
 
-train_stats = load_json('./Data/COCO/Processed/train_stats.json')
-val_stats = load_json('./Data/COCO/Processed/val_stats.json')
+    system2color = dict(zip(sorted(system2label),my_palette))
 
-train     = set(train_stats['types'])
-val       = set(val_stats['types'])
-learnable = train & val
+    train_stats = load_json('./Data/COCO/Processed/train_stats.json')
+    val_stats = load_json('./Data/COCO/Processed/val_stats.json')
 
-limit = len(learnable)/len(val)
-size_limit = len(val) - len(learnable)
-print(f'The limit is: {limit}. This means {size_limit} words in Val cannot be learned.')
+    train     = set(train_stats['types'])
+    val       = set(val_stats['types'])
+    learnable = train & val
 
-################################################################################
-# Run the script.
+    limit = len(learnable)/len(val)
+    size_limit = len(val) - len(learnable)
+    print(f'The limit is: {limit}. This means {size_limit} words in Val cannot be learned.')
 
-systems = ['Dai-et-al-2017',
-           'Liu-et-al-2017',
-           'Mun-et-al-2017',
-           'Shetty-et-al-2016',
-           'Shetty-et-al-2017',
-           'Tavakoli-et-al-2017',
-           'Vinyals-et-al-2017',
-           'Wu-et-al-2016',
-           'Zhou-et-al-2017']
+    ################################################################################
+    # Run the script.
 
-# Get coverage results
-coverage_results = {system:coverage(system, learnable) for system in systems}
+    systems = ['Dai-et-al-2017',
+               'Liu-et-al-2017',
+               'Mun-et-al-2017',
+               'Shetty-et-al-2016',
+               'Shetty-et-al-2017',
+               'Tavakoli-et-al-2017',
+               'Vinyals-et-al-2017',
+               'Wu-et-al-2016',
+               'Zhou-et-al-2017']
 
-# Add global omission ranking
-for entry in coverage_results.values():
-    entry['omissions'] = most_frequent_omissions(entry['recalled'],
-                                                 val_stats,         # Use validation set as reference.
-                                                 n=None)            # Rank everything
+    # Get coverage results
+    coverage_results = {system:coverage(system, learnable) for system in systems}
 
-# Add percentile scores.
-val_count_list = get_count_list(val_stats)
-for entry in coverage_results.values():
-    recalled = entry['recalled']
-    entry['percentiles'] = percentiles(val_count_list, recalled)
+    # Add global omission ranking
+    for entry in coverage_results.values():
+        entry['omissions'] = most_frequent_omissions(entry['recalled'],
+                                                     val_stats,         # Use validation set as reference.
+                                                     n=None)            # Rank everything
 
-plot_percentiles(coverage_results)
+    # Add percentile scores.
+    val_count_list = get_count_list(val_stats)
+    for entry in coverage_results.values():
+        recalled = entry['recalled']
+        entry['percentiles'] = percentiles(val_count_list, recalled)
 
-# Save the data
-save_json(coverage_results, './Data/Output/global_recall.json')
+    plot_percentiles(coverage_results)
 
-# Show a table with the results.
-table = tabulate(tabular_data=[(system, entry['score']) for system, entry in coverage_results.items()],
-                 headers=['System', 'Coverage'],
-                 tablefmt='latex_booktabs',
-                 floatfmt='.2f')
+    # Save the data
+    save_json(coverage_results, './Data/Output/global_recall.json')
 
-print(table)
-with open('./Data/Output/global_recall_table.txt','w') as f:
-    f.write(table)
-    f.write('\n\n')
-    f.write(f'The limit is:  {limit}. This means {size_limit} words in Val cannot be learned.')
+    # Show a table with the results.
+    table = tabulate(tabular_data=[(system, entry['score']) for system, entry in coverage_results.items()],
+                     headers=['System', 'Coverage'],
+                     tablefmt='latex_booktabs',
+                     floatfmt='.2f')
+
+    print(table)
+    with open('./Data/Output/global_recall_table.txt','w') as f:
+        f.write(table)
+        f.write('\n\n')
+        f.write(f'The limit is:  {limit}. This means {size_limit} words in Val cannot be learned.')
