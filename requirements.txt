@@ -1,0 +1,5 @@
+seaborn
+tabulate
+nltk
+spacy==2.0.4
+numpy
