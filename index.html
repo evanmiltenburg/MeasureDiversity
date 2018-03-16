@@ -1,0 +1,113 @@
+<html>
+<head>
+    <title>Measuring diversity</title>
+</head>
+
+<style>
+div {
+    background-color:white;
+}
+body {
+    background-color: #000033;
+    font-family: sans-serif;
+}
+
+h1,h2,h3 {
+    font-family: sans-serif;
+}
+
+
+</style>
+
+</body>
+<div style="margin:auto;width:850px;margin-top:50px;margin-bottom:50px;">
+<div style="padding:25px;">
+<h1 id="measurediversity">Measuring Diversity</h1>
+This is a temporary website for our paper "Measuring the Diversity of Automatic Image Descriptions."
+All our code and data is hosted on GitHub, but we could not share the GitHub link in our paper due to the double-blind review process.
+Here is a direct link to download the code and data (right-click, <i>save as</i>).
+Please do not look at the URL.
+
+<h1 id="requirements">Requirements</h1>
+These are the exact versions of the software that we used.
+Different versions may result in different scores from the ones reported in the paper.
+
+<ul>
+<li>Python 3.6.3</li>
+<ul>
+<li>SpaCy 2.0.4</li>
+<ul>
+<li>Model: <code>en_core_web_sm</code></li>
+</ul>
+
+<li>NLTK 3.2.2
+<ul>
+<li>WordNet 3.0</li>
+</ul></li>
+<li>Matplotlib 2.1.1</li>
+<li>Seaborn 0.7.1</li>
+<li>Tabulate 0.7.7</li>
+<li>Numpy 1.13.1</li>
+</ul>
+<li>Pdfcrop 1.38 (only to crop the graphs for the paper)</li>
+</ul>
+
+<h1 id="how-to-use">How to use</h1>
+
+Instructions to either:
+
+<ul>
+<li>Inspect our data</li>
+<li>Reproduce our results</li>
+<li>Analyze your own system</li>
+</ul>
+
+<h2 id="inspecting-our-data">Inspecting our data</h2>
+
+Please find all output in <code>Data/Output/</code>.
+
+
+<h2 id="reproducing-our-results">Reproducing our results</h2>
+
+First run <code>bash get_data.sh</code> in the <code>Data/COCO/Raw/</code> folder.
+This downloads the 2014 MS COCO annotation data and unpacks the zip file.
+Please ensure that both <code>JSON</code> files are unpacked in <code>Data/COCO/Raw/</code> (and not in some subfolder).
+Then the following commands in order:
+
+<ul>
+<li><code>python annotate_coco.py</code> to annotate the MS COCO training and val data.</li>
+<li><code>python annotate_generated.py</code> to annotate the generated descriptions.</li>
+<li><code>python coco_stats.py</code> to generate statistics about the MS COCO data.</li>
+<li><code>python system_stats.py</code> to generate statistics about the systems.</li>
+<li><code>python plot_ttr_curve.py</code> to plot the type-token curve for MS COCO and all systems.</li>
+<li><code>python global_recall.py</code> to compute global recall.</li>
+<li><code>python local_recall.py</code> to compute local recall.</li>
+<li><code>python generate_main_table.py</code> to generate the main table.</li>
+<li><code>python generate_ranking_table.py</code> to generate the rankings.</li>
+<li><code>python nouns_pps.py</code> to generate the compound noun and PP results.</li>
+<li><code>python plot_compound_length.py</code> to generate a histogram of compound length for different systems.</li>
+<li><code>python plot_pp_length.py</code> to generate a histogram of PP depth for different systems.</li>
+</ul>
+
+If you modify any of the Python files, you can rerun the analysis using <code>bash run_experiment.sh</code>.
+We commented out the first two commands, because annotating all the data takes a long time.
+If you are interested to reproduce our exact figures, run <code>pdfcrop FILENAME.pdf</code> on the relevant files in <code>Data/Output/</code>.
+This tool is provided with the TeXLive LaTeX distribution.
+
+<h2 id="analyzing-your-own-system">Analyzing your own system</h2>
+
+If you don't care about other systems, you can also just run the following commands
+(assuming you stored your system output in <code>descriptions.json</code>).
+
+<ul>
+<li> <code>python annotate_coco.py</code> </li>
+<li> <code>python analyze_my_system.py descriptions.json</code> </li>
+</ul>
+
+This will first generate the basis statistics for MS COCO (the standard of comparison),
+and then generate all statistics for a single system.
+Make sure your system output is in the standard JSON format. See the Systems folder for examples.
+</div>
+</div>
+</body>
+</html>
