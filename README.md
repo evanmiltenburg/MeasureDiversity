@@ -64,3 +64,22 @@ If you don't care about other systems, you can also just run the following comma
 * `python analyze_my_system.py descriptions.json`
 
 This will first generate the basis statistics for MS COCO (the standard of comparison), and then generate all statistics for a single system. Make sure your system output is in the standard JSON format. See the Systems folder for examples.
+
+## Citation
+
+If you use this repository, please consider citing our paper:
+
+```
+@InProceedings{C18-1147,
+  author = 	"van Miltenburg, Emiel
+		and Elliott, Desmond
+		and Vossen, Piek",
+  title = 	"Measuring the Diversity of Automatic Image Descriptions",
+  booktitle = 	"Proceedings of the 27th International Conference on Computational Linguistics",
+  year = 	"2018",
+  publisher = 	"Association for Computational Linguistics",
+  pages = 	"1730--1741",
+  location = 	"Santa Fe, New Mexico, USA",
+  url = 	"http://aclweb.org/anthology/C18-1147"
+}
+```
