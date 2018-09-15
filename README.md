@@ -67,7 +67,8 @@ This will first generate the basis statistics for MS COCO (the standard of compa
 
 ## Citation
 
-If you use this repository, please consider citing our paper:
+* Bibliographic data for all systems can be found in `/Data/Systems/`.
+* If you use this repository, please consider citing our paper:
 
 ```
 @InProceedings{C18-1147,
