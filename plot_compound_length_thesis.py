@@ -57,7 +57,7 @@ to_plot['number'].extend([val[i] for i in [2,3,4]])
 df = pd.DataFrame(to_plot)
 ax = sns.barplot(x='number', y='length', hue='system', data=df)
 
-fig, ax = plt.subplots(figsize=(27,28))
+fig, ax = plt.subplots(figsize=(45,28))
 ax = sns.barplot(x='number', y='length', hue='system', data=df)
 ax.set_xscale('log')
 
