@@ -61,6 +61,7 @@ Make sure your system output is in the standard JSON format. See the Systems fol
 If you don't care about other systems, you can also just run the following commands (assuming you stored your system output in `descriptions.json`).
 
 * `python annotate_coco.py`
+* `python coco_stats.py`
 * `python analyze_my_system.py descriptions.json`
 
 This will first generate the basis statistics for MS COCO (the standard of comparison), and then generate all statistics for a single system. Make sure your system output is in the standard JSON format. See the Systems folder for examples.
