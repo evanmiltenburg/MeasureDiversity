@@ -183,6 +183,9 @@ def type_token_ratio(sentences, n=1000):
     """
     all_words = [word for sentence in sentences for word in sentence]
     ttrs = []
+    if len(all_words) < n:
+        print("Warning: not enough tokens!")
+        return None
     for chunk in chunks(all_words, n):
         if len(chunk) == n:
             types = set(chunk)
