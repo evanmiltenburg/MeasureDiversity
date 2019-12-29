@@ -28,7 +28,7 @@ Please find all output in `Data/Output/`.
 ## Reproducing our results
 
 First run `bash get_data.sh` in the `Data/COCO/Raw/` folder. This downloads the 2014 MS COCO annotation data
-and unpacks the zip file. Please ensure that both `JSON` files are unpacked in `Data/COCO/Raw/` (and not in some subfolder).
+and unpacks the zip file. Please ensure that both `JSON` files are unpacked in `Data/COCO/Raw/` (and not in some subfolder). The shell script assumes you have `wget` installed. If you have a Mac, this is not installed by default. You can use Homebrew to get it.
 
 Then the following commands in order:
 
@@ -55,6 +55,9 @@ LaTeX distribution.
 ## Analyzing your own system
 
 If you don't care about other systems, you can also just run the following commands (assuming you stored your system output in `descriptions.json`).
+
+First run `bash get_data.sh` in the `Data/COCO/Raw/` folder. This downloads the 2014 MS COCO annotation data
+and unpacks the zip file. Please ensure that both `JSON` files are unpacked in `Data/COCO/Raw/` (and not in some subfolder). The shell script assumes you have `wget` installed. If you have a Mac, this is not installed by default. You can use Homebrew to get it.
 
 * `python annotate_coco.py`
 * `python coco_stats.py`
